@@ -8,9 +8,9 @@ class FileSaver {
     val FILENAME = "listinfo.dat"
 
     fun writeData(item : ArrayList<String>,context : Context){
-        var fos : FileOutputStream = context.openFileOutput(FILENAME,Context.MODE_PRIVATE) //No other application will read this file
+        val fos : FileOutputStream = context.openFileOutput(FILENAME,Context.MODE_PRIVATE) //No other application will read this file
 
-        var oas = ObjectOutputStream(fos)
+        val oas = ObjectOutputStream(fos)
         oas.writeObject(item) //writes the arrayList in fos file
         oas.close()
     }
@@ -19,9 +19,9 @@ class FileSaver {
         var item : ArrayList<String>
 
         try{
-            var fis : FileInputStream = context.openFileInput(FILENAME)
+            val fis : FileInputStream = context.openFileInput(FILENAME)
 
-            var ois = ObjectInputStream(fis)
+            val ois = ObjectInputStream(fis)
             item = ois.readObject() as ArrayList<String>
         } catch(e : FileNotFoundException){
             item = ArrayList<String>()  //creates empty arrayList to display in listview if file is not created
